@@ -1,5 +1,4 @@
 import java.nio.file.Files
-import java.nio.file.Paths
 import static java.nio.file.attribute.PosixFilePermissions.*
 
 buildscript {
@@ -65,11 +64,11 @@ def codeProcessorProject = project(':generators:code-processor')
         repositories {
             mavenLocal()
             mavenCentral()
-            maven { url 'https://clyze.jfrog.io/artifactory/default-maven-local' }
-            // maven {
-            //     url "http://centauri.di.uoa.gr:8081/artifactory/plast-public"
-            //     allowInsecureProtocol true    // for Gradle 7 compatibility
-            // }
+            // maven { url 'https://clyze.jfrog.io/artifactory/default-maven-local' }
+            maven {
+                url "http://centauri.di.uoa.gr:8081/artifactory/plast-public"
+                allowInsecureProtocol true    // for Gradle 7 compatibility
+            }
         }
     }
 }
@@ -109,12 +108,14 @@ frontendGeneratorProjects.each { Project p ->
 repositories {
     mavenLocal()
     mavenCentral()
-    // maven { url "http://centauri.di.uoa.gr:8081/artifactory/plast-deps" }
-    // maven {
-    //     url "http://centauri.di.uoa.gr:8081/artifactory/plast-public"
-    //     allowInsecureProtocol true // for Gradle 7 compatibility
-    // }
-    maven { url 'https://clyze.jfrog.io/artifactory/default-maven-local' }
+    maven { url "http://centauri.di.uoa.gr:8081/artifactory/plast-deps"
+        allowInsecureProtocol true
+    }
+    maven {
+        url "http://centauri.di.uoa.gr:8081/artifactory/plast-public"
+        allowInsecureProtocol true // for Gradle 7 compatibility
+    }
+    // maven { url 'https://clyze.jfrog.io/artifactory/default-maven-local' }
     maven { url 'https://jitpack.io' }
     maven {
         name "soot-snapshot"
@@ -164,7 +165,7 @@ dependencies {
             "commons-logging:commons-logging:1.1",              // Logging wrapper
             "log4j:log4j:${log4jVersion}",                      // Logging implementation
             "commons-cli:commons-cli:${commonsCliVersion}",     // Command line processor
-            "commons-io:commons-io:2.4",                        // File Utils
+            'commons-io:commons-io:2.11.0',                     // File Utils
             "org.clyze:clue-common:${clueCommonVersion}"
     api "org.clyze:HeapDL:$heapDLVersion"
     implementation "com.google.guava:guava:27.1-jre"                   // for Scaler
