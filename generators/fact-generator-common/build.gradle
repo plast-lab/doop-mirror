@@ -3,6 +3,7 @@ plugins {
     id 'java-library'
 }
 
+// String asmVersion = '9.4'
 String asmVersion = '8.0.1'
 
 // WARNING: dependencies below should be minimal, since every

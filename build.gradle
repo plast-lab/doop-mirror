@@ -22,7 +22,7 @@ plugins {
 }
 
 // Warning: -Xss is restricted in recent Java versions.
-def factGenXmx='12000m'
+def factGenXmx='20000m'
 def factGenStack='1000m'
 def defaultFactGenJvmArgs = ["-DmaxHeapSize=${factGenXmx}", "-DstackSize=${factGenStack}"]
 
@@ -117,14 +117,14 @@ repositories {
     }
     // maven { url 'https://clyze.jfrog.io/artifactory/default-maven-local' }
     maven { url 'https://jitpack.io' }
-    maven {
-        name "soot-snapshot"
-        url "https://soot-build.cs.uni-paderborn.de/nexus/repository/soot-snapshot"
-    }
-    maven {
-        name "soot-release"
-        url "https://soot-build.cs.uni-paderborn.de/nexus/repository/soot-release"
-    }
+    // maven {
+    //     name "soot-snapshot"
+    //     url "https://soot-build.cs.uni-paderborn.de/nexus/repository/soot-snapshot"
+    // }
+    // maven {
+    //     name "soot-release"
+    //     url "https://soot-build.cs.uni-paderborn.de/nexus/repository/soot-release"
+    // }
 }
 
 configurations {
